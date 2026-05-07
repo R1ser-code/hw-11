@@ -1,94 +1,41 @@
 #include <iostream>
+#include <string>
 
-enum Month
+struct BankAccount
 {
-    January = 1,
-    February,
-    March,
-    April,
-    May,
-    June,
-    July,
-    August,
-    September,
-    October,
-    November,
-    December
+    int accountNumber;
+    std::string ownerName;
+    double balance;
 };
+
+void changeBalance(BankAccount& account, double newBalance)
+{
+    account.balance = newBalance;
+}
 
 int main()
 {
-    int number;
+    BankAccount account;
+    double newBalance;
 
-    do
-    {
-        std::cout << "Enter month number: ";
-        std::cin >> number;
+    std::cout << "Enter account number: ";
+    std::cin >> account.accountNumber;
 
-        Month month = static_cast<Month>(number);
+    std::cout << "Enter owner name: ";
+    std::cin >> account.ownerName;
 
-        switch (month)
-        {
-        case January:
-            std::cout << "January\n";
-            break;
+    std::cout << "Enter balance: ";
+    std::cin >> account.balance;
 
-        case February:
-            std::cout << "February\n";
-            break;
+    std::cout << "Enter new balance: ";
+    std::cin >> newBalance;
 
-        case March:
-            std::cout << "March\n";
-            break;
+    changeBalance(account, newBalance);
 
-        case April:
-            std::cout << "April\n";
-            break;
-
-        case May:
-            std::cout << "May\n";
-            break;
-
-        case June:
-            std::cout << "June\n";
-            break;
-
-        case July:
-            std::cout << "July\n";
-            break;
-
-        case August:
-            std::cout << "August\n";
-            break;
-
-        case September:
-            std::cout << "September\n";
-            break;
-
-        case October:
-            std::cout << "October\n";
-            break;
-
-        case November:
-            std::cout << "November\n";
-            break;
-
-        case December:
-            std::cout << "December\n";
-            break;
-
-        default:
-            if (number == 0)
-            {
-                std::cout << "Goodbye\n";
-            }
-            else
-            {
-                std::cout << "Wrong number!\n";
-            }
-        }
-
-    } while (number != 0);
+    std::cout << "Your account: "
+        << account.ownerName << ", "
+        << account.accountNumber << ", "
+        << account.balance << std::endl;
 
     return 0;
 }
